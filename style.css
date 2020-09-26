@@ -1,8 +1,194 @@
 body {
     margin: 0px;
     padding: 0px;
+    font-family: 'Righteous', cursive;
+    background-color: #e6e9ff;
+    /* font-family: 'Ubuntu', sans-serif; */
 }
 
 .parent {
     margin: 0px;
+    width: 100%;
+}
+
+.chat-box {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.name-style {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #667aff;
+    padding: 20px 0px;
+    justify-content: space-between;
+    color: white;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
+    gap: 5px;
+    font-size: 30px;
+}
+
+.img-div {
+    background-image: url('./image/Picture1.svg');
+    background-size: contain;
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.name-div {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 15px;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.name-div input[type='text'] {
+    background-color: transparent;
+    outline: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-family: 'Righteous', cursive;
+    text-align: center;
+    font-size: 18px;
+}
+
+::placeholder {
+    color: white;
+    font-family: 'Righteous', cursive;
+}
+
+.name-btn {
+    border: 1px solid transparent;
+    background-color: white;
+    color: #667aff;
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.name-btn:hover {
+    background-color: transparent;
+    color: white;
+    box-shadow: 0px 0px 0px 2px white inset;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.name-display {
+    padding-right: 20px;
+    font-size: 24px;
+}
+
+.message-container {
+    display: flex;
+    height: 400px;
+}
+
+.msg-notification {
+    padding: 20px 15px;
+    width: 25%;
+    background-color: #7386ff;
+    overflow: auto;
+    color: white;
+    text-align: center;
+}
+
+.msg-deatils {
+    padding: 0px 15px;
+    background-color: rgb(226, 226, 226);
+    width: 75%;
+    overflow: auto;
+}
+
+.msgs-div {
+    padding: 0px 10px;
+    width: 95%;
+    height: 100%;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.messages {
+    padding: 20px 0px;
+}
+
+.new-messages {
+    background-color: #e6e9ff;
+    border-radius: 3px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: black;
+}
+
+.new-notifications {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.node-two {
+    width: 100%;
+    background-color: #667aff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.msg-send {
+    padding: 15px 0px;
+    width: 90%;
+    margin: auto;
+}
+
+.msg-sub-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.msg-sub-send input[type="text"] {
+    background-color: transparent;
+    width: 100%;
+    padding: 8px 8px;
+    border: none;
+    outline: none;
+    color: black;
+}
+
+.msg-sub-send ::placeholder {
+    color: rgb(123, 123, 123);
+}
+
+.send-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #e6e9ff;
+    color: #667aff;
+}
+
+.send-btn:hover {
+    cursor: pointer;
 }

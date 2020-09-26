@@ -2,23 +2,65 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Apllication</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <script src="index.js" defer></script>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
 </head>
 
 <body>
 
     <div class="parent">
 
-        <div class="message-container"></div>
-        <input class="input-name" type="text">
-        <button type="submit" class="name-btn">Send Name</button>
-        <input class="input-text" type="text">
-        <button type="submit" class="send-btn">Send</button>
+        <div class="chat-box">
+
+            <div class="name-style">
+                <div class="head">
+                    <div class="img-div"></div>
+                    <div>ChatCord</div>
+                </div>
+                <div class="name-div">
+                    <input class="input-name" type="text" placeholder="Enter your name">
+                    <div class="name-btn">Save Name</div>
+                </div>
+            </div>
+
+            <div class="message-container">
+
+                <div class="msg-notification">
+
+                </div>
+                <div class="msg-deatils">
+                    <div class="msgs-div">
+                        <div class="messages"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="node-two">
+                <div class="msg-send">
+                    <div class="msg-sub-send">
+                        <input class="input-text" type="text" placeholder="Enter message">
+                        <div class="send-btn">
+                            <img src="image/Picture2.svg" width="20" height="20"></img>
+                            Send
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
 
 </body>
