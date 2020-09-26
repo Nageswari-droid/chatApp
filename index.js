@@ -25,6 +25,11 @@ nameBtn.addEventListener('click', function() {
     sendHandler(name);
 });
 
+socket.on('user-connected', function(userName) {
+    console.log(userName);
+    msgNotifications(`${userName} Connected`);
+});
+
 socket.on('chat-message', (data) => {
     appendMessage(`${data.name} : ${data.message}`);
 });
@@ -57,8 +62,4 @@ function msgNotifications(message) {
 
 function sendHandler(name) {
     socket.emit('new-user', name);
-    socket.on('user-connected', function(userName) {
-        console.log(userName);
-        msgNotifications(`${userName} Connected`);
-    });
 }
