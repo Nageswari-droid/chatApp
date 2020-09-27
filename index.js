@@ -10,10 +10,9 @@ const submitBtn = document.querySelector('.send-btn');
 const nodeTwo = document.querySelector('.node-two');
 const msgNot = document.querySelector('.msg-notification');
 
-msgNotifications(`You connected`);
+msgNotifications(`You joined`);
 
 nameBtn.addEventListener('click', function() {
-
     let name = userName.value;
 
     nameDiv.style.display = 'none';
@@ -31,7 +30,8 @@ socket.on('user-connected', function(userName) {
 });
 
 socket.on('chat-message', (data) => {
-    appendMessage(`${data.name} : ${data.message}`);
+    appendMessage(data.name, data.message);
+    msgNotifications(`Message from ${data.name}`);
 });
 
 socket.on('user-disconnected', (name) => {
@@ -40,16 +40,49 @@ socket.on('user-disconnected', (name) => {
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const message = msgInput.value;
-    appendMessage(`You: ${message}`);
+    const message = msgInput.value.trim();
+    appendYourMessage('You', message);
     socket.emit('send-chat', message);
     msgInput.value = ' ';
 });
 
-function appendMessage(message) {
+function appendYourMessage(name, message) {
+    const d = new Date();
+    var hrs = addZero(d.getHours());
+    var minutes = addZero(d.getMinutes());
+    const newParentElement = document.createElement('div');
+    newParentElement.className = 'new-your-messages';
+    newParentElement.innerHTML = `
+        <div class="parent-new-element">
+            <div class="name-time">
+                <div class="name">${name}</div>
+            </div>
+            <div class="message-class">
+                ${message}
+            </div>
+            <div class="time">${hrs}:${minutes}</div>
+        </div>
+    `;
+    msgContainer.append(newParentElement);
+}
+
+function appendMessage(name, message) {
+    const d = new Date();
+    var hrs = addZero(d.getHours());
+    var minutes = addZero(d.getMinutes());
     const newElement = document.createElement('div');
     newElement.className = 'new-messages';
-    newElement.innerText = message;
+    newElement.innerHTML = `
+        <div class="parent-element">
+            <div class="name-time">
+                <div class="name">${name}</div>
+            </div>
+            <div class="message-class">
+                ${message}
+            </div>
+            <div class="time">${hrs}:${minutes}</div>
+        </div>
+    `;
     msgContainer.append(newElement);
 }
 
@@ -62,4 +95,11 @@ function msgNotifications(message) {
 
 function sendHandler(name) {
     socket.emit('new-user', name);
+}
+
+function addZero(i) {
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
 }

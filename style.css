@@ -3,7 +3,6 @@ body {
     padding: 0px;
     font-family: 'Righteous', cursive;
     background-color: #e6e9ff;
-    /* font-family: 'Ubuntu', sans-serif; */
 }
 
 .parent {
@@ -12,9 +11,8 @@ body {
 }
 
 .chat-box {
-    width: 50%;
     margin: auto;
-    margin-top: 50px;
+    height: 760px;
     display: flex;
     flex-direction: column;
     border-radius: 3px;
@@ -24,12 +22,11 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-color: #667aff;
+    background-color: #35384c;
     padding: 20px 0px;
     justify-content: space-between;
     color: white;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
 .head {
@@ -39,6 +36,35 @@ body {
     padding-left: 15px;
     gap: 5px;
     font-size: 30px;
+}
+
+.parent-element::before {
+    width: 10px;
+    padding: 8px;
+    margin-right: -17px;
+    margin-top: 2px;
+    content: '';
+    background: #cdfbfb;
+    position: absolute;
+    float: right;
+    right: 12px;
+    left: auto;
+    /* border-radius: 5px; */
+    transform: rotate(37deg);
+}
+
+.parent-new-element::before {
+    width: 10px;
+    padding: 8px;
+    margin-left: -15px;
+    margin-top: 10px;
+    content: '';
+    background: #e6e9ff;
+    position: absolute;
+    float: left;
+    /* border-radius: 5px; */
+    transform: rotate(39deg);
+    z-index: -1;
 }
 
 .img-div {
@@ -61,31 +87,33 @@ body {
 .name-div input[type='text'] {
     background-color: transparent;
     outline: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    color: white;
-    font-family: 'Righteous', cursive;
+    border: solid 1px #787c97;
+    color: #c3c4cd;
     text-align: center;
     font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: lighter;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 ::placeholder {
     color: white;
+    font-weight: lighter;
     font-family: 'Righteous', cursive;
 }
 
 .name-btn {
     border: 1px solid transparent;
-    background-color: white;
-    color: #667aff;
+    background-color: #595d73;
+    color: #d9dced;
     padding: 5px 10px;
     border-radius: 2px;
 }
 
 .name-btn:hover {
-    background-color: transparent;
-    color: white;
-    box-shadow: 0px 0px 0px 2px white inset;
+    background-color: #707593;
+    color: #d9dced;
     cursor: pointer;
     border-radius: 2px;
 }
@@ -93,68 +121,122 @@ body {
 .name-display {
     padding-right: 20px;
     font-size: 24px;
+    color: #d9dced;
+}
+
+.name-time {
+    gap: 10px;
+    font-size: 12px;
+    color: rgb(121, 121, 121);
+}
+
+.time {
+    text-align: right;
+    font-size: 12px;
+    color: rgb(121, 121, 121);
 }
 
 .message-container {
     display: flex;
-    height: 400px;
+    height: 100%;
 }
 
 .msg-notification {
-    padding: 20px 15px;
-    width: 25%;
-    background-color: #7386ff;
+    width: 20%;
+    height: 100%;
+    background-color: #2b2e40;
+    overflow: auto;
+    color: white;
+    text-align: center;
+}
+
+.joined-status {
+    width: 20%;
+    height: 100%;
+    background-color: #2b2e40;
     overflow: auto;
     color: white;
     text-align: center;
 }
 
 .msg-deatils {
-    padding: 0px 15px;
-    background-color: rgb(226, 226, 226);
-    width: 75%;
-    overflow: auto;
+    height: 100%;
+    /* background-color: rgb(226, 226, 226); */
+    width: 60%;
 }
 
 .msgs-div {
-    padding: 0px 10px;
-    width: 95%;
-    height: 100%;
-    margin: auto;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
+    /* margin: 0px 15px; */
+    /* padding: 0px 10px; */
+    width: 100%;
+    height: 85%;
+    overflow: auto;
+    /* margin: auto; */
+    background-color: rgb(37 40 58);
+    /* border-radius: 5px; */
 }
 
 .messages {
-    padding: 20px 0px;
+    padding: 20px 15px;
+    padding-bottom: 0px;
+}
+
+.message-class {
+    word-break: break-word;
 }
 
 .new-messages {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 100;
+    background-color: #cdfbfb;
+    border-radius: 3px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    color: black;
+    box-sizing: content-box;
+    max-width: 350px;
+    min-width: 50px;
+}
+
+.new-your-messages {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 100;
     background-color: #e6e9ff;
     border-radius: 3px;
-    width: 90%;
-    margin: auto;
+    width: fit-content;
+    margin-left: 0px;
+    margin-right: auto;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 5px 10px;
     color: black;
+    box-sizing: content-box;
+    max-width: 350px;
+    min-width: 50px;
 }
 
 .new-notifications {
     color: white;
+    padding: 20px;
     margin-bottom: 10px;
 }
 
 .node-two {
     width: 100%;
-    background-color: #667aff;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    background-color: #25283a;
+    border-top: solid 1px #60668c
 }
 
 .msg-send {
-    padding: 15px 0px;
-    width: 90%;
+    padding: 25px 0px;
     margin: auto;
+    width: 90%;
 }
 
 .msg-sub-send {
@@ -168,7 +250,7 @@ body {
 .msg-sub-send input[type="text"] {
     background-color: transparent;
     width: 100%;
-    padding: 8px 8px;
+    padding: 15px 8px;
     border: none;
     outline: none;
     color: black;
@@ -182,13 +264,49 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 8px;
+    padding: 15px 8px;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     background-color: #e6e9ff;
-    color: #667aff;
+    color: #565e93;
 }
 
 .send-btn:hover {
     cursor: pointer;
+}
+
+.msgs-div::-webkit-scrollbar {
+    width: 7px;
+}
+
+.msgs-div::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.msgs-div::-webkit-scrollbar-thumb {
+    background: rgba(188, 188, 188, 0.593);
+    border-radius: 10px;
+}
+
+.msgs-div::-webkit-scrollbar-thumb:hover {
+    background: rgba(142, 141, 141, 0.593);
+}
+
+.msg-notification::-webkit-scrollbar {
+    width: 5px;
+}
+
+.msg-notification::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.msg-notification::-webkit-scrollbar-thumb {
+    background: rgba(188, 188, 188, 0.593);
+    border-radius: 10px;
+}
+
+.msgs-div::-webkit-scrollbar-thumb:hover {
+    background: rgba(142, 141, 141, 0.593);
 }
