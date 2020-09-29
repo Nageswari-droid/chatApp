@@ -9,6 +9,7 @@ const nameBtn = document.querySelector('.name-btn');
 const submitBtn = document.querySelector('.send-btn');
 const nodeTwo = document.querySelector('.node-two');
 const msgNot = document.querySelector('.msg-notification');
+const date = document.querySelector('.each-date');
 
 msgNotifications(`You joined`);
 
@@ -103,3 +104,18 @@ function addZero(i) {
     }
     return i;
 }
+
+
+function dateHandler() {
+    const dateUpdate = new Date().toString().split(' ');
+    let dateStr = (dateUpdate[1] + " " + dateUpdate[2] + " " + dateUpdate[3]).trim();
+    const newDateEle = document.createElement('div');
+    newDateEle.className = "date-style";
+    newDateEle.innerHTML = `
+        ${dateStr}
+    `;
+
+    date.append(newDateEle);
+}
+
+dateHandler();
