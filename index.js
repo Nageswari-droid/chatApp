@@ -15,14 +15,7 @@ msgNotifications(`You joined`);
 
 nameBtn.addEventListener('click', function() {
     let name = userName.value;
-
-    nameDiv.style.display = 'none';
-    const nameDisplay = document.createElement('div');
-    nameDisplay.className = 'name-display';
-    nameDisplay.innerHTML = `Welcome, ${name}`;
-    nameParent.append(nameDisplay);
-
-    sendHandler(name);
+    inputHandler(name);
 });
 
 socket.on('user-connected', function(userName) {
@@ -40,12 +33,15 @@ socket.on('user-disconnected', (name) => {
 });
 
 submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const message = msgInput.value.trim();
-    appendYourMessage('You', message);
-    socket.emit('send-chat', message);
-    msgInput.value = ' ';
+    submitHandler(e);
 });
+
+document.querySelector('#msg-sub').addEventListener('keypress', function(event) {
+    if (event.which === 13) {
+        submitHandler(event);
+    }
+})
+
 
 function appendYourMessage(name, message) {
     const d = new Date();
@@ -116,6 +112,25 @@ function dateHandler() {
     `;
 
     date.append(newDateEle);
+}
+
+function inputHandler(name) {
+
+    nameDiv.style.display = 'none';
+    const nameDisplay = document.createElement('div');
+    nameDisplay.className = 'name-display';
+    nameDisplay.innerHTML = `Welcome, ${name}`;
+    nameParent.append(nameDisplay);
+
+    sendHandler(name);
+}
+
+function submitHandler(e) {
+    e.preventDefault();
+    const message = msgInput.value.trim();
+    appendYourMessage('You', message);
+    socket.emit('send-chat', message);
+    msgInput.value = ' ';
 }
 
 dateHandler();
