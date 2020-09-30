@@ -61,6 +61,7 @@ function appendYourMessage(name, message) {
         </div>
     `;
     msgContainer.append(newParentElement);
+    scrollHandler();
 }
 
 function appendMessage(name, message) {
@@ -81,6 +82,7 @@ function appendMessage(name, message) {
         </div>
     `;
     msgContainer.append(newElement);
+    scrollHandler();
 }
 
 function msgNotifications(message) {
@@ -131,6 +133,10 @@ function submitHandler(e) {
     appendYourMessage('You', message);
     socket.emit('send-chat', message);
     msgInput.value = ' ';
+}
+
+function scrollHandler() {
+    msgContainer.scrollTop += msgContainer.scrollHeight;
 }
 
 dateHandler();
