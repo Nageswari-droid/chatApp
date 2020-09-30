@@ -172,7 +172,7 @@ body {
     /* margin: 0px 15px; */
     /* padding: 0px 10px; */
     width: 100%;
-    height: 582px;
+    height: 570px;
     /* overflow: auto; */
     /* margin: auto; */
     background-color: rgb(37 40 58);
@@ -191,7 +191,7 @@ body {
     color: rgb(128 128 143);
     top: 25px;
     background: rgb(37 40 58);
-    width: 15%;
+    width: 20%;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -224,7 +224,7 @@ body {
     color: black;
     box-sizing: content-box;
     max-width: 350px;
-    min-width: 50px;
+    min-width: 60px;
 }
 
 .new-your-messages {
@@ -242,7 +242,7 @@ body {
     color: black;
     box-sizing: content-box;
     max-width: 350px;
-    min-width: 50px;
+    min-width: 60px;
 }
 
 .new-notifications {
@@ -296,6 +296,43 @@ body {
 
 .send-btn:hover {
     cursor: pointer;
+}
+
+.file-uploads {
+    max-width: 100%;
+    margin: auto;
+}
+
+.file-uploads input[type='file'] {
+    width: 0%;
+}
+
+.file-upload {
+    justify-content: center;
+    display: flex;
+    align-items: flex-end;
+}
+
+.file-upload-class {
+    position: relative;
+    top: 0px;
+    left: -25px;
+}
+
+.file-upload-class:hover {
+    cursor: pointer;
+}
+
+.img-avatar {
+    margin-top: 20px;
+    background-image: url('image/Picture4.svg');
+    background-size: contain;
+    width: 120px;
+    height: 120px;
+}
+
+.file-upload-style {
+    visibility: hidden;
 }
 
 .messages::-webkit-scrollbar {

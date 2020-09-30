@@ -10,6 +10,11 @@ const submitBtn = document.querySelector('.send-btn');
 const nodeTwo = document.querySelector('.node-two');
 const msgNot = document.querySelector('.msg-notification');
 const date = document.querySelector('.each-date');
+const form = document.querySelector('.form-enable');
+
+form.addEventListener('click', function(event) {
+    event.preventDefault();
+})
 
 msgNotifications(`You joined`);
 
@@ -17,6 +22,13 @@ nameBtn.addEventListener('click', function() {
     let name = userName.value;
     inputHandler(name);
 });
+
+userName.addEventListener('keypress', function(event) {
+    if (event.which === 13) {
+        let name = userName.value;
+        inputHandler(name);
+    }
+})
 
 socket.on('user-connected', function(userName) {
     console.log(userName);
@@ -133,6 +145,7 @@ function submitHandler(e) {
     appendYourMessage('You', message);
     socket.emit('send-chat', message);
     msgInput.value = ' ';
+    $('.input-text').attr('placeholder', 'Enter message');
 }
 
 function scrollHandler() {

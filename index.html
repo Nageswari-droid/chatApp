@@ -10,7 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Peddana&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="index.js" defer></script>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
@@ -37,11 +43,22 @@
             <div class="message-container">
 
                 <div class="joined-status">
+                    <div class="file-uploads">
+                        <form enctype="multipart/form-data">
+                            <input type="file" id="file-upload-id" class="file-upload-style">
+                            <label for="file-upload-id" class="file-upload">
+                                <div class="img-avatar">
 
+                                </div>
+                                <img src="image/Picture1.png" class="file-upload-class" width="40" height="40">
+                            </label>
+                        </form>
+                    </div>
                 </div>
                 <div class="msg-deatils">
                     <div class="msgs-div">
-                        <div style="width: 100%; margin-bottom: 30px;">
+                        <div style="width: 100%; padding-bottom: 20px;
+                        box-shadow: 3px 2px 0px 0px #262a3a;">
                             <div class="each-date">
 
                             </div>
