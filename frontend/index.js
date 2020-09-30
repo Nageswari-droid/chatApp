@@ -11,10 +11,28 @@ const nodeTwo = document.querySelector('.node-two');
 const msgNot = document.querySelector('.msg-notification');
 const date = document.querySelector('.each-date');
 const form = document.querySelector('.form-enable');
+const profilePic = document.querySelector('#file-upload-id');
 
-form.addEventListener('click', function(event) {
-    event.preventDefault();
-})
+var formData = new FormData();
+
+profilePic.addEventListener('change', function(event) {
+    formData.delete('images');
+    formData.append('images', event.target.files[0]);
+
+    fetch('http://localhost:3000/uploads/', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((res) => {
+            res.json().then((res) => {
+                document.querySelector('.img-avatar').style.backgroundImage =
+                    'url(data:image/png;base64,' + res.body + ')';
+            });
+        })
+        .catch((err) => {
+            console.log('Error: ' + err);
+        });
+});
 
 msgNotifications(`You joined`);
 
@@ -28,7 +46,7 @@ userName.addEventListener('keypress', function(event) {
         let name = userName.value;
         inputHandler(name);
     }
-})
+});
 
 socket.on('user-connected', function(userName) {
     console.log(userName);
@@ -48,12 +66,13 @@ submitBtn.addEventListener('click', (e) => {
     submitHandler(e);
 });
 
-document.querySelector('#msg-sub').addEventListener('keypress', function(event) {
-    if (event.which === 13) {
-        submitHandler(event);
-    }
-})
-
+document
+    .querySelector('#msg-sub')
+    .addEventListener('keypress', function(event) {
+        if (event.which === 13) {
+            submitHandler(event);
+        }
+    });
 
 function appendYourMessage(name, message) {
     const d = new Date();
@@ -115,12 +134,17 @@ function addZero(i) {
     return i;
 }
 
-
 function dateHandler() {
     const dateUpdate = new Date().toString().split(' ');
-    let dateStr = (dateUpdate[1] + " " + dateUpdate[2] + " " + dateUpdate[3]).trim();
+    let dateStr = (
+        dateUpdate[1] +
+        ' ' +
+        dateUpdate[2] +
+        ' ' +
+        dateUpdate[3]
+    ).trim();
     const newDateEle = document.createElement('div');
-    newDateEle.className = "date-style";
+    newDateEle.className = 'date-style';
     newDateEle.innerHTML = `
         ${dateStr}
     `;
@@ -129,7 +153,6 @@ function dateHandler() {
 }
 
 function inputHandler(name) {
-
     nameDiv.style.display = 'none';
     const nameDisplay = document.createElement('div');
     nameDisplay.className = 'name-display';

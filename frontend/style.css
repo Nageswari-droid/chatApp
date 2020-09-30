@@ -71,7 +71,7 @@ body {
 }
 
 .img-div {
-    background-image: url('./image/Picture1.svg');
+    background-image: url('../image/Picture1.svg');
     background-size: contain;
     margin-top: 5px;
     width: 30px;
@@ -325,7 +325,7 @@ body {
 
 .img-avatar {
     margin-top: 20px;
-    background-image: url('image/Picture4.svg');
+    background-image: url('../image/Picture4.svg');
     background-size: contain;
     width: 120px;
     height: 120px;
