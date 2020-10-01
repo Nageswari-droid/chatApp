@@ -43,7 +43,7 @@ const upload = multer({
 }).single('images')
 
 app.post('/uploads', upload, (req, res) => {
-    console.log(req.file);
+    // console.log(req.file);
     res.json({
         body: fs
             .readFileSync('../../uploads/' + req.file.filename)
