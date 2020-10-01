@@ -157,11 +157,8 @@ body {
 
 .joined-status {
     width: 20%;
-    height: 100%;
     background-color: #2b2e40;
-    overflow: auto;
     color: white;
-    text-align: center;
 }
 
 .msg-deatils {
@@ -171,14 +168,9 @@ body {
 }
 
 .msgs-div {
-    /* margin: 0px 15px; */
-    /* padding: 0px 10px; */
     width: 100%;
     height: 570px;
-    /* overflow: auto; */
-    /* margin: auto; */
     background-color: rgb(37 40 58);
-    /* border-radius: 5px; */
 }
 
 .each-date {
@@ -362,6 +354,74 @@ body {
 
 .file-upload-style {
     visibility: hidden;
+}
+
+.about {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.about-text-box {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* .save-parent-btn {
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: 5px;
+} */
+
+.save-btn {
+    position: relative;
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: 5px;
+    padding: 0px 5px;
+    top: 25px;
+    background-color: #2b2e40;
+    border: 2px solid #4f546f;
+    border-radius: 7px;
+    color: #8d8d9a;
+}
+
+.save-btn:hover {
+    cursor: pointer;
+}
+
+.about-text-box textarea {
+    width: 100%;
+    /* z-index: 100; */
+    color: #a7aab5;
+    margin: auto;
+    background-color: transparent;
+    border: 2px solid #4f546f;
+    border-radius: 15px;
+    outline: none;
+    padding: 10px;
+    /* height: 100px; */
+    overflow: hidden;
+    resize: none;
+}
+
+.write-div {
+    /* padding: 10px 0px; */
+    position: relative;
+    top: -70px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.write-move-div {
+    max-width: 30%;
+    color: #8d8d9a;
+    background-color: #2b2e40;
+    margin: auto;
+    position: relative;
+    top: -40px;
 }
 
 .messages::-webkit-scrollbar {

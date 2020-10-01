@@ -12,6 +12,9 @@ const msgNot = document.querySelector('.msg-notification');
 const date = document.querySelector('.each-date');
 const form = document.querySelector('.form-enable');
 const profilePic = document.querySelector('#file-upload-id');
+const textArea = document.querySelector('.about-yourself');
+
+const textAreaAnime = document.querySelector('.write-size');
 
 var formData = new FormData();
 var appendMsgFlag = 0,
@@ -54,6 +57,10 @@ userName.addEventListener('keypress', function(event) {
         inputHandler(name);
     }
 });
+
+textArea.addEventListener('click', () => {
+    // textAreaAnime.classList.add('write-move-div');
+})
 
 socket.on('user-connected', function(userName) {
     msgNotifications(`${userName} Connected`);
