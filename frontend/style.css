@@ -378,13 +378,23 @@ body {
     position: relative;
     max-width: 30%;
     margin-left: auto;
-    margin-right: 5px;
+    margin-right: 20px;
+    text-align: center;
     padding: 0px 5px;
-    top: 25px;
+    top: -56px;
+    border-radius: 7px;
+    visibility: hidden;
+    color: #56565b;
+}
+
+.save-btn-move {
+    visibility: visible;
+    color: #8d8d9a;
+    position: relative;
+    top: -47px;
     background-color: #2b2e40;
     border: 2px solid #4f546f;
-    border-radius: 7px;
-    color: #8d8d9a;
+    animation: moveSave 0.2s;
 }
 
 .save-btn:hover {
@@ -407,21 +417,44 @@ body {
 }
 
 .write-div {
-    /* padding: 10px 0px; */
+    color: #56565b;
+    pointer-events: none;
     position: relative;
     top: -70px;
-    width: 90%;
-    margin: auto;
+    max-width: 30%;
     text-align: center;
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 0px 5px;
 }
 
 .write-move-div {
-    max-width: 30%;
+    width: 100%;
     color: #8d8d9a;
+    padding: 0px 5px;
     background-color: #2b2e40;
-    margin: auto;
+    text-align: center;
     position: relative;
     top: -40px;
+    animation: move 0.3s;
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: -40px;
+    }
+}
+
+@keyframes moveSave {
+    0% {
+        top: -56px;
+    }
+    100% {
+        top: -47px;
+    }
 }
 
 .messages::-webkit-scrollbar {

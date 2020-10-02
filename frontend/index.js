@@ -15,6 +15,7 @@ const profilePic = document.querySelector('#file-upload-id');
 const textArea = document.querySelector('.about-yourself');
 
 const textAreaAnime = document.querySelector('.write-size');
+const saveBtn = document.querySelector('.save-btn');
 
 var formData = new FormData();
 var appendMsgFlag = 0,
@@ -59,7 +60,8 @@ userName.addEventListener('keypress', function(event) {
 });
 
 textArea.addEventListener('click', () => {
-    // textAreaAnime.classList.add('write-move-div');
+    textAreaAnime.classList.add('write-move-div');
+    saveBtn.classList.add('save-btn-move');
 })
 
 socket.on('user-connected', function(userName) {
