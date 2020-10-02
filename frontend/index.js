@@ -62,7 +62,18 @@ userName.addEventListener('keypress', function(event) {
 textArea.addEventListener('click', () => {
     textAreaAnime.classList.add('write-move-div');
     saveBtn.classList.add('save-btn-move');
-})
+});
+
+saveBtn.addEventListener('click', () => {
+    console.log(textArea.value);
+    socket.emit('about-user', textArea.value);
+});
+
+socket.on('user-detail', (msg) => {
+    console.log(msg);
+    const strMsg = msg.trim();
+    msgNotifications(strMsg);
+});
 
 socket.on('user-connected', function(userName) {
     msgNotifications(`${userName} Connected`);
@@ -125,7 +136,7 @@ function appendYourMessage(name, message, dp) {
     msgContainer.append(newParentElement);
     $('.msg-with-avatar').css('background-image', `${bgImageNew}`);
     // $('.your-name').textContent = name;
-    scrollHandler();
+    scrollHandler(msgContainer);
 
     if (appendYourMsgFlag === 0) {
         $(`#msg-with-avatar-${i}`).css("visibility", "visible");
@@ -174,7 +185,7 @@ function appendMessage(name, message, dp) {
     msgContainer.append(newElement);
     $('.msg-with-user-avatar').css('background-image', `${bgImage}`);
     $('.user-name').text(name);
-    scrollHandler();
+    scrollHandler(msgContainer);
 
     if (appendMsgFlag === 0) {
         $(`#msg-with-user-avatar-${j}`).css("visibility", "visible");
@@ -190,6 +201,7 @@ function msgNotifications(message) {
     newElement.className = 'new-notifications';
     newElement.innerText = message;
     msgNot.append(newElement);
+    scrollHandler(msgNot);
 }
 
 function sendHandler(name) {
@@ -241,8 +253,8 @@ function submitHandler(e) {
     $('.input-text').attr('placeholder', 'Enter message');
 }
 
-function scrollHandler() {
-    msgContainer.scrollTop += msgContainer.scrollHeight;
+function scrollHandler(scrollBar) {
+    scrollBar.scrollTop += scrollBar.scrollHeight;
 }
 
 dateHandler();
