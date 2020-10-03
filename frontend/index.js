@@ -65,12 +65,19 @@ textArea.addEventListener('click', () => {
 });
 
 saveBtn.addEventListener('click', () => {
-    console.log(textArea.value);
+    const newSaveElement = document.createElement('div');
+    newSaveElement.className = 'saveBtnClass';
+    newSaveElement.innerHTML = `
+        <div class="save-btn-new">
+            ""${textArea.value}""
+        </div>
+    `;
+    $('.about-text-box').hide();
+    $('.about').append(newSaveElement);
     socket.emit('about-user', textArea.value);
 });
 
 socket.on('user-detail', (msg) => {
-    console.log(msg);
     const strMsg = msg.trim();
     msgNotifications(strMsg);
 });
@@ -108,10 +115,8 @@ function appendYourMessage(name, message, dp) {
 
     if (!dp) {
         bgImageNew = `url('../image/Picture4.svg')`;
-        console.log(bgImageNew);
     } else {
         bgImageNew = `url('data:image/png;base64,${dp}')`;
-        console.log(bgImageNew);
     }
 
     const newParentElement = document.createElement('div');
@@ -135,7 +140,6 @@ function appendYourMessage(name, message, dp) {
 
     msgContainer.append(newParentElement);
     $('.msg-with-avatar').css('background-image', `${bgImageNew}`);
-    // $('.your-name').textContent = name;
     scrollHandler(msgContainer);
 
     if (appendYourMsgFlag === 0) {
@@ -246,7 +250,6 @@ function inputHandler(name) {
 function submitHandler(e) {
     e.preventDefault();
     const message = msgInput.value.trim();
-    // socket.emit('user-dp', userDp);
     appendYourMessage('You', message, userDp);
     socket.emit('send-chat', message);
     msgInput.value = ' ';
