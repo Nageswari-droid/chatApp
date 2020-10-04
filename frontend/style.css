@@ -265,7 +265,7 @@ body {
 }
 
 .new-notifications {
-    color: white;
+    color: rgb(153 157 183);
     padding: 10px;
 }
 
@@ -311,6 +311,11 @@ body {
     border-top-right-radius: 3px;
     background-color: #e6e9ff;
     color: #565e93;
+}
+
+.saveBtnClass {
+    text-align: center;
+    color: #999cae;
 }
 
 .send-btn:hover {
@@ -404,6 +409,7 @@ body {
     outline: none;
     padding: 10px;
     /* height: 100px; */
+    text-align: initial;
     overflow: hidden;
     resize: none;
 }

@@ -69,11 +69,18 @@ saveBtn.addEventListener('click', () => {
     newSaveElement.className = 'saveBtnClass';
     newSaveElement.innerHTML = `
         <div class="save-btn-new">
-            ""${textArea.value}""
+            ${textArea.value.trim()}
         </div>
     `;
-    $('.about-text-box').hide();
-    $('.about').append(newSaveElement);
+    console.log(textArea.value.trim().length);
+    if (textArea.value.trim().length > 0) {
+        $('.about-text-box').hide();
+        $('.about').append(newSaveElement);
+        console.log(textArea.value);
+    } else {
+        alert("Enter something.")
+    }
+    // $('save-btn-new').attr('disabled', true);
     socket.emit('about-user', textArea.value);
 });
 
