@@ -266,7 +266,7 @@ body {
 
 .new-notifications {
     color: rgb(153 157 183);
-    padding: 10px;
+    padding: 5px;
 }
 
 .node-two {
@@ -397,6 +397,10 @@ body {
     flex-direction: column;
 }
 
+.save-btn-new {
+    text-align: center;
+}
+
 .save-btn-move {
     visibility: visible;
     color: #8d8d9a;
@@ -446,7 +450,7 @@ body {
     text-align: center;
     position: relative;
     top: -40px;
-    animation: move 0.3s;
+    animation: move 0.1s;
 }
 
 .error-message {
@@ -474,7 +478,7 @@ body {
     gap: 5px;
     margin-left: auto;
     margin-right: 20px;
-    padding: 5px 10px;
+    padding: 3px 7px;
     border-radius: 5px;
     border: 2px solid #52556b;
     background-color: #52556b;

@@ -84,15 +84,17 @@ saveBtn.addEventListener('click', () => {
     if (textArea.value.trim().length > 0 && userName.value.trim().length > 0) {
         $('.about-text-box').hide();
         $('.about').append(newSaveElement);
-        $('.edit-btn').on("mouseover", () => {
-            console.log($('.edit-img'));
-            $('.edit-img').css("backgroundImage", "url('../image/Picture10.svg')");
+
+        socket.emit('about-user', { about: textArea.value, name: userName.value });
+
+        mouseEventHandler('.edit-btn', '.edit-img');
+
+        $('.edit-btn').on("click", () => {
+            $('.saveBtnClass').remove();
+            textArea.value = textArea.value;
+            $('.about-text-box').show();
         });
 
-        $('.edit-btn').on("mouseleave", () => {
-            $('.edit-img').css("backgroundImage", "url('../image/Picture9.svg')");
-        });
-        socket.emit('about-user', { about: textArea.value, name: userName.value });
     } else if (textArea.value.trim().length === 0) {
         errorHandler('Write something about yourself.');
     } else if (userName.value.trim().length === 0) {
@@ -291,4 +293,15 @@ function errorHandler(errorMsg) {
         $(errorMessage).fadeOut('slow')
     }, 1500);
 }
+
+function mouseEventHandler(editClass, editImg) {
+    $(editClass).on("mouseover", () => {
+        $(editImg).css("backgroundImage", "url('../image/Picture10.svg')");
+    });
+
+    $(editClass).on("mouseleave", () => {
+        $(editImg).css("backgroundImage", "url('../image/Picture9.svg')");
+    });
+}
+
 dateHandler();
