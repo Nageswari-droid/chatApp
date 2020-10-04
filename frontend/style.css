@@ -314,7 +314,11 @@ body {
 }
 
 .saveBtnClass {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     color: #999cae;
 }
 
@@ -335,6 +339,10 @@ body {
     justify-content: center;
     display: flex;
     align-items: flex-end;
+}
+
+.file-upload:hover {
+    cursor: pointer;
 }
 
 .file-upload-class {
@@ -458,6 +466,33 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #52556b;
+    background-color: #52556b;
+}
+
+.edit-img {
+    background-image: url("../image/Picture9.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+}
+
+.edit-btn:hover {
+    cursor: pointer;
+    border: 2px solid #6b6e84;
+    background-color: #6b6e84;
+    color: #cacacd;
 }
 
 @keyframes move {

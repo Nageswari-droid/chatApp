@@ -71,12 +71,27 @@ saveBtn.addEventListener('click', () => {
         <div class="save-btn-new">
             ${textArea.value.trim()}
         </div>
+        <div class="edit-btn">
+            <div>
+                ${"Edit"} 
+            </div>
+            <div class="edit-img">
+                
+            </div>
+        </div>
     `;
-    console.log(textArea.value.trim().length);
+
     if (textArea.value.trim().length > 0 && userName.value.trim().length > 0) {
         $('.about-text-box').hide();
         $('.about').append(newSaveElement);
-        console.log(textArea.value + "," + userName.value);
+        $('.edit-btn').on("mouseover", () => {
+            console.log($('.edit-img'));
+            $('.edit-img').css("backgroundImage", "url('../image/Picture10.svg')");
+        });
+
+        $('.edit-btn').on("mouseleave", () => {
+            $('.edit-img').css("backgroundImage", "url('../image/Picture9.svg')");
+        });
         socket.emit('about-user', { about: textArea.value, name: userName.value });
     } else if (textArea.value.trim().length === 0) {
         errorHandler('Write something about yourself.');
@@ -86,8 +101,6 @@ saveBtn.addEventListener('click', () => {
 });
 
 socket.on('user-detail', (data) => {
-    // const strMsg = msg.trim();
-    console.log(data.about + "," + data.name)
     msgNotifications(`${data.name} - ${data.about}`);
 });
 

@@ -11,7 +11,6 @@ exports.socketHandler = (io) => {
             dp[socket.id] = userDp;
         });
         socket.on('about-user', (data) => {
-            console.log(data.about + "," + data.name);
             socket.broadcast.emit('user-detail', { about: data.about, name: data.name });
         });
         socket.on('send-chat', (message) => {
