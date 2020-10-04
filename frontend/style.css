@@ -377,11 +377,16 @@ body {
     margin-left: auto;
     margin-right: 20px;
     text-align: center;
-    padding: 0px 5px;
+    padding: 0px 10px;
     top: -56px;
     border-radius: 7px;
     visibility: hidden;
     color: #56565b;
+}
+
+.save-parent-btn {
+    display: flex;
+    flex-direction: column;
 }
 
 .save-btn-move {
@@ -409,7 +414,6 @@ body {
     outline: none;
     padding: 10px;
     /* height: 100px; */
-    text-align: initial;
     overflow: hidden;
     resize: none;
 }
@@ -435,6 +439,25 @@ body {
     position: relative;
     top: -40px;
     animation: move 0.3s;
+}
+
+.error-message {
+    color: #d4d4d5;
+    background-color: #52556b;
+    /* font-family: sans-serif; */
+    border: 1px solid #52556b;
+    font-size: 20px;
+    width: 90%;
+    outline: none;
+    font-size: 15px;
+    position: relative;
+    top: -20px;
+    /* margin-top: 20px; */
+    border-radius: 5px;
+    padding: 10px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 @keyframes move {

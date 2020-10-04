@@ -10,8 +10,9 @@ exports.socketHandler = (io) => {
         socket.on('user-dp', (userDp) => {
             dp[socket.id] = userDp;
         });
-        socket.on('about-user', (textAreaVal) => {
-            socket.broadcast.emit('user-detail', textAreaVal);
+        socket.on('about-user', (data) => {
+            console.log(data.about + "," + data.name);
+            socket.broadcast.emit('user-detail', { about: data.about, name: data.name });
         });
         socket.on('send-chat', (message) => {
             socket.broadcast.emit('chat-message', {

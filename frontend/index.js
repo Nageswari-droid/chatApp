@@ -73,20 +73,22 @@ saveBtn.addEventListener('click', () => {
         </div>
     `;
     console.log(textArea.value.trim().length);
-    if (textArea.value.trim().length > 0) {
+    if (textArea.value.trim().length > 0 && userName.value.trim().length > 0) {
         $('.about-text-box').hide();
         $('.about').append(newSaveElement);
-        console.log(textArea.value);
-    } else {
-        alert("Enter something.")
+        console.log(textArea.value + "," + userName.value);
+        socket.emit('about-user', { about: textArea.value, name: userName.value });
+    } else if (textArea.value.trim().length === 0) {
+        errorHandler('Write something about yourself.');
+    } else if (userName.value.trim().length === 0) {
+        errorHandler('Enter your name in the header text box.');
     }
-    // $('save-btn-new').attr('disabled', true);
-    socket.emit('about-user', textArea.value);
 });
 
-socket.on('user-detail', (msg) => {
-    const strMsg = msg.trim();
-    msgNotifications(strMsg);
+socket.on('user-detail', (data) => {
+    // const strMsg = msg.trim();
+    console.log(data.about + "," + data.name)
+    msgNotifications(`${data.name} - ${data.about}`);
 });
 
 socket.on('user-connected', function(userName) {
@@ -267,4 +269,13 @@ function scrollHandler(scrollBar) {
     scrollBar.scrollTop += scrollBar.scrollHeight;
 }
 
+function errorHandler(errorMsg) {
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    errorMessage.innerHTML = `&#x2717; ${errorMsg}`;
+    $('.save-parent-btn').append(errorMessage);
+    setTimeout(function(data) {
+        $(errorMessage).fadeOut('slow')
+    }, 1500);
+}
 dateHandler();
