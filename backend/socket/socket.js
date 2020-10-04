@@ -13,6 +13,9 @@ exports.socketHandler = (io) => {
         socket.on('about-user', (data) => {
             socket.broadcast.emit('user-detail', { about: data.about, name: data.name });
         });
+        socket.on('edit-user', (editUser) => {
+            socket.broadcast.emit('edited-details', editUser);
+        });
         socket.on('send-chat', (message) => {
             socket.broadcast.emit('chat-message', {
                 message: message,

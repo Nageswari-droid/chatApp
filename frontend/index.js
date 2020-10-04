@@ -23,6 +23,7 @@ var appendMsgFlag = 0,
 let yourDp, userDp;
 let i = 0,
     j = 0;
+let editFlag = 0;
 
 profilePic.addEventListener('change', function(event) {
     formData.delete('images');
@@ -65,11 +66,18 @@ textArea.addEventListener('click', () => {
 });
 
 saveBtn.addEventListener('click', () => {
+
+    const textAreaValue = textArea.value.trim();
+
+    if (editFlag === 1) {
+        socket.emit('edit-user', userName.value);
+    }
+
     const newSaveElement = document.createElement('div');
     newSaveElement.className = 'saveBtnClass';
     newSaveElement.innerHTML = `
         <div class="save-btn-new">
-            ${textArea.value.trim()}
+            ${textAreaValue}
         </div>
         <div class="edit-btn">
             <div>
@@ -81,7 +89,7 @@ saveBtn.addEventListener('click', () => {
         </div>
     `;
 
-    if (textArea.value.trim().length > 0 && userName.value.trim().length > 0) {
+    if (textAreaValue.length > 0 && userName.value.trim().length > 0) {
         $('.about-text-box').hide();
         $('.about').append(newSaveElement);
 
@@ -93,9 +101,10 @@ saveBtn.addEventListener('click', () => {
             $('.saveBtnClass').remove();
             textArea.value = textArea.value;
             $('.about-text-box').show();
+            editFlag = 1;
         });
 
-    } else if (textArea.value.trim().length === 0) {
+    } else if (textAreaValue.length === 0) {
         errorHandler('Write something about yourself.');
     } else if (userName.value.trim().length === 0) {
         errorHandler('Enter your name in the header text box.');
@@ -105,6 +114,10 @@ saveBtn.addEventListener('click', () => {
 socket.on('user-detail', (data) => {
     msgNotifications(`${data.name} - ${data.about}`);
 });
+
+socket.on('edited-details', (name) => {
+    msgNotifications(`(${name} edited profile)`)
+})
 
 socket.on('user-connected', function(userName) {
     msgNotifications(`${userName} Connected`);
