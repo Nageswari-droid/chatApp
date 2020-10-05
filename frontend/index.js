@@ -24,6 +24,7 @@ let yourDp, userDp;
 let i = 0,
     j = 0;
 let editFlag = 0;
+let textAreaFlag = 0;
 
 profilePic.addEventListener('change', function(event) {
     formData.delete('images');
@@ -61,10 +62,15 @@ userName.addEventListener('keypress', function(event) {
 });
 
 textArea.addEventListener('click', () => {
-    textAreaAnime.classList.remove('remove-animation');
-    textAreaAnime.classList.add('write-move-div');
-    saveBtn.classList.remove('remove-save-animation');
-    saveBtn.classList.add('save-btn-move');
+    if (textAreaFlag == 0) {
+        textAreaAnime.classList.add('write-move-div');
+        saveBtn.classList.add('save-btn-move');
+        textAreaFlag = 1;
+    } else if (textAreaFlag == 1) {
+        textAreaAnime.classList.add('remove-animation');
+        saveBtn.classList.add('remove-save-animation');
+    }
+
 });
 
 saveBtn.addEventListener('click', () => {
@@ -135,7 +141,11 @@ socket.on('chat-message', (data) => {
 });
 
 socket.on('user-disconnected', (name) => {
-    msgNotifications(`${name} disconnected`);
+    if (!name) {
+        msgNotifications(`Unknown user disconnected`);
+    } else {
+        msgNotifications(`${name} disconnected`);
+    }
 });
 
 submitBtn.addEventListener('click', (e) => {
