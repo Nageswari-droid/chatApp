@@ -61,7 +61,9 @@ userName.addEventListener('keypress', function(event) {
 });
 
 textArea.addEventListener('click', () => {
+    textAreaAnime.classList.remove('remove-animation');
     textAreaAnime.classList.add('write-move-div');
+    saveBtn.classList.remove('remove-save-animation');
     saveBtn.classList.add('save-btn-move');
 });
 
@@ -100,6 +102,10 @@ saveBtn.addEventListener('click', () => {
         $('.edit-btn').on("click", () => {
             $('.saveBtnClass').remove();
             textArea.value = textArea.value;
+            textAreaAnime.classList.remove('write-move-div');
+            textAreaAnime.classList.add('remove-animation');
+            saveBtn.classList.remove('save-btn-move');
+            saveBtn.classList.add('remove-save-animation');
             $('.about-text-box').show();
             editFlag = 1;
         });
@@ -116,7 +122,7 @@ socket.on('user-detail', (data) => {
 });
 
 socket.on('edited-details', (name) => {
-    msgNotifications(`(${name} edited profile)`)
+    msgNotifications(`(${name} updated about)`)
 })
 
 socket.on('user-connected', function(userName) {

@@ -358,7 +358,8 @@ body {
 .img-avatar {
     margin-top: 20px;
     background-image: url('../image/Picture4.svg');
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -451,6 +452,25 @@ body {
     position: relative;
     top: -40px;
     animation: move 0.1s;
+}
+
+.remove-animation {
+    width: 100%;
+    color: #8d8d9a;
+    /* padding: 0px 5px; */
+    background-color: #2b2e40;
+    text-align: center;
+    position: relative;
+    top: -40px;
+}
+
+.remove-save-animation {
+    visibility: visible;
+    color: #8d8d9a;
+    position: relative;
+    top: -47px;
+    background-color: #2b2e40;
+    border: 2px solid #4f546f;
 }
 
 .error-message {
