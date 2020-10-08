@@ -32,7 +32,7 @@ profilePic.addEventListener('change', function(event) {
 
     fetch('http://localhost:3000/uploads/', {
             method: 'POST',
-            body: formData,
+            body: formData
         })
         .then((res) => {
             res.json().then((res) => {
