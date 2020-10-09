@@ -35,6 +35,7 @@ profilePic.addEventListener('change', function(event) {
             body: formData
         })
         .then((res) => {
+            window.location.pathname.replace("/frontend/", "/frontend/upload");
             res.json().then((res) => {
                 userDp = res.body;
                 socket.emit('user-dp', res.body);
