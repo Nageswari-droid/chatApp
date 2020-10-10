@@ -27,6 +27,7 @@ let editFlag = 0;
 let textAreaFlag = 0;
 
 profilePic.addEventListener('change', function(event) {
+
     formData.delete('images');
     formData.append('images', event.target.files[0]);
 
@@ -35,7 +36,8 @@ profilePic.addEventListener('change', function(event) {
             body: formData
         })
         .then((res) => {
-            window.location.pathname.replace("/frontend/", "/frontend/upload");
+            // window.location.pathname.replace("/frontend/", "/frontend/upload");
+
             res.json().then((res) => {
                 userDp = res.body;
                 socket.emit('user-dp', res.body);
@@ -75,6 +77,21 @@ textArea.addEventListener('click', () => {
 });
 
 saveBtn.addEventListener('click', () => {
+
+    function ChangeUrl(url) {
+        // if (typeof(history.pushState) != "undefined") {
+        //     var obj = { Url: url };
+        //     history.pushState(obj, obj.Url);
+        //     console.log(url);
+        //     console.log(history.pushState(obj, obj.Url));
+        // } else {
+        //     alert("Browser does not support HTML5.");
+        // }
+        var obj = { Url: url };
+        window.history.pushState(obj, "saveBtn", obj.Url);
+    }
+
+    ChangeUrl('/frontend/saveContent');
 
     const textAreaValue = textArea.value.trim();
 
