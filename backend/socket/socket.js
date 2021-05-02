@@ -22,6 +22,8 @@ exports.socketHandler = (io) => {
                 name: users[socket.id],
                 userDp: dp[socket.id]
             });
+
+            // console.log(message);
         });
         socket.on('disconnect', () => {
             socket.broadcast.emit('user-disconnected', users[socket.id]);
